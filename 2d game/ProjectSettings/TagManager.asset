@@ -8,6 +8,11 @@ TagManager:
   - firepoint
   - 'enemy '
   - Health
+  - Pistol
+  - AK47
+  - uzi
+  - spawnright
+  - spawnleft
   layers:
   - Default
   - TransparentFX

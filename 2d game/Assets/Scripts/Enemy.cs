@@ -12,11 +12,23 @@ public class Enemy : MonoBehaviour {
     public Transform target;
 
 	void Start () {
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-	}
+
+         
+    }
     void Update()
     {
-        if (Vector2.Distance(transform.position, target.position) > distance)
+
+
+
+       // if (target.transform.position.x >= transform.position.x)
+       // { 
+        //transform.LookAt(target);
+       // }
+        //bascially check players positiion constatly
+        RaycastHit hit;
+            if (Vector2.Distance(transform.position, target.position) > distance)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }

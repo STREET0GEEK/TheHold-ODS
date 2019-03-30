@@ -7,6 +7,7 @@ public class PlayerScript : MonoBehaviour {
     public float jumpForce = 10f;
     public float disGround = 1f;
     public float Health = 100.0f;
+    public bool turningl = false;
 
     public bool hit = false;
 
@@ -20,7 +21,8 @@ public class PlayerScript : MonoBehaviour {
 
     public Rigidbody2D ridge;
 
-
+    //need to figure out how to represent anynumber to the enemy id
+    //maybe store in list
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
         if (hitInfo.name == "Enemy (Clone)")
@@ -38,13 +40,20 @@ public class PlayerScript : MonoBehaviour {
 
 
     void Start (){
-    fp = GameObject.FindGameObjectWithTag("firepoint"); 
-    pl = GameObject.FindGameObjectWithTag("Player");
-    ridge = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+
+        
+
+        fp = GameObject.FindGameObjectWithTag("firepoint"); 
+        pl = GameObject.FindGameObjectWithTag("Player");
+        ridge = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
 	}
 
 	void Update () {
-       // Debug.Log(Health);
+       // GameObject spawnscript = GameObject.Find("SpawnPoint Right");
+       // Spawn spawnScript = spawnscript.GetComponent<Spawn>();
+
+       // Debug.Log(spawnScript.Limit);
+       // Debug.Log(turningl);
         float whore = Input.GetAxisRaw("Horizontal");
         transform.Translate(whore * speed * Time.deltaTime, 0f, 0f);
         if (Input.GetAxisRaw("Jump") != 0 && isGrounded()) { 
@@ -59,6 +68,7 @@ public class PlayerScript : MonoBehaviour {
             newScale.x *= -1;
             pl.transform.localScale = newScale;
             fp.transform.Rotate(0f, 180, 0f);
+            turningl = true;
         }
         if (Input.GetKeyDown(KeyCode.D) && pl.transform.localScale.x < 0)
         {
@@ -66,6 +76,7 @@ public class PlayerScript : MonoBehaviour {
             newScale.x *= -1;
             pl.transform.localScale = newScale;
             fp.transform.Rotate(0f, -180, 0f);
+            turningl = false;
         }
             
     }
