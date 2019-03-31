@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23188541467937036}
   - component: {fileID: 65401351882933568}
   m_Layer: 0
-  m_Name: clone 4
+  m_Name: slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -22,7 +22,9 @@ public class GUN : MonoBehaviour
 
     public float bulletspeed = 10;
 
-    public int numofbullets;
+    public int numofbulletspistol;
+    public int numofbulletsak47;
+    public int numofbulletsUZI;
 
     public GameObject PistolSpritered;
 
@@ -44,12 +46,11 @@ public class GUN : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+        //        Debug.Log(numofbullets);
+        // GunSelect = scrollpos.gunPos;
 
-
-//        Debug.Log(numofbullets);
-           // GunSelect = scrollpos.gunPos;
-
-            if (Input.GetButton("Fire1")){
+        if (Input.GetButton("Fire1")){
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -101,39 +102,90 @@ public class GUN : MonoBehaviour
                     break;
             }
         }
-        
+        if (Input.GetKeyDown(KeyCode.R))
+        { 
+            if (GunSelect == "clone 0(Clone)")
+            {
+                numofbulletspistol = 0;
+            }
+            if (GunSelect == "clone 1(Clone)")
+            {
+                numofbulletsak47 = 0;
+            }
+            if (GunSelect == "clone 2(Clone)")
+            {
+                numofbulletsUZI = 0;
+            }
+            //if (GunSelect == "clone 3(Clone)")
+            //{
+
+            //}
+            //if (GunSelect == "clone 4(Clone)")
+            //{
+
+            //}
+        }
+
+
     }
 
     void shoot()
     {
-        if (Input.GetButtonDown("Fire1")){
-            Instantiate(BulletPre, firepoint.position, firepoint.rotation);
-            numofbullets += 1;
+        if (numofbulletspistol <= 12) 
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Instantiate(BulletPre, firepoint.position, firepoint.rotation);
+                numofbulletspistol += 1;
 
+            }
         }
+
 
 
 
     }
     void ak47()
     {
-        if (Input.GetButton("Fire1"))
+        if (numofbulletsak47 <= 30)
         {
-            shooting = true;
-            Instantiate(BulletPre, firepoint.position, firepoint.rotation);
-            numofbullets += 1;
-            //yield return new WaitForSeconds (bulletspeed);
-            //System.Threading.Thread.Sleep();
+
+            if (Input.GetButton("Fire1"))
+            {
+                shooting = true;
+                Instantiate(BulletPre, firepoint.position, firepoint.rotation);
+                numofbulletsak47 += 1;
+                //yield return new WaitForSeconds (bulletspeed);
+                //System.Threading.Thread.Sleep();
+            }
         }
+        //if (numofbulletsak47 == 30)
+        //{
+            //wait();
+            //numofbulletsak47 = 0;
+
+        //}
 
     }
     void UZI()
     {
-      //  for(int i = 0; i <= 1; i++)
-      //  {
+        if (numofbulletsUZI <= 20)
+        {
+            //  for(int i = 0; i <= 1; i++)
+            //  {
             Instantiate(BulletPre, firepoint.position, firepoint.rotation);
-            numofbullets += 1;
-
+            numofbulletsUZI += 1;
+            
+        }
         //  }
     }
+
+    //void wait(float loadtime)
+    //{
+    //    float timeelapsed = 0;
+    //    while(timeelapsed <= loadtime)
+    //    {
+    //        timeelapsed = timeelapsed + Time.deltaTime;
+    //    }
+    //}
 }
