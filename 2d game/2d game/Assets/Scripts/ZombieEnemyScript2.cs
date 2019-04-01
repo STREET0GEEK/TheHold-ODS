@@ -37,13 +37,13 @@ public class ZombieEnemyScript2 : MonoBehaviour
     {
         if (targetpl.transform.position.x >= transform.position.x)
         {
-            print("hellothere");
+           // print("hellothere");
             transform.rotation = Quaternion.Euler(0f, 180f, 0.0f);
 
         }
         if (targetpl.transform.position.x <= transform.position.x)
         {
-            print("hellothere");
+           // print("hellothere");
             transform.rotation = Quaternion.Euler(0f, 0f, 0.0f);
 
         }
