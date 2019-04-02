@@ -26,6 +26,13 @@ public class GUN : MonoBehaviour
     public int numofbulletsak47;
     public int numofbulletsUZI;
 
+    public int MaxBulletsAk47 = 180;
+    public int MaxBulletsUZI = 200;
+
+    public int totalbulletspistol;
+    public int totalbulletsak47;
+    public int totalbulletsUZI;
+
     public GameObject PistolSpritered;
 
 
@@ -40,7 +47,7 @@ public class GUN : MonoBehaviour
 
 
         pl = GameObject.FindGameObjectWithTag("Player");
-        Scroller scrollerposition = GetComponent<Scroller>();
+//        Scroller scrollerposition = GetComponent<Scroller>();
     }
 
     // Update is called once per frame
@@ -131,12 +138,13 @@ public class GUN : MonoBehaviour
 
     void shoot()
     {
-        if (numofbulletspistol <= 12) 
+        if (numofbulletspistol <= 11) 
         {
             if (Input.GetButtonDown("Fire1"))
             {
                 Instantiate(BulletPre, firepoint.position, firepoint.rotation);
                 numofbulletspistol += 1;
+                totalbulletspistol += 1;
 
             }
         }
@@ -147,37 +155,42 @@ public class GUN : MonoBehaviour
     }
     void ak47()
     {
-        if (numofbulletsak47 <= 30)
+        if(totalbulletsak47 <= MaxBulletsAk47)
         {
-
-            if (Input.GetButton("Fire1"))
+            if (numofbulletsak47 <= 29)
             {
-                shooting = true;
-                Instantiate(BulletPre, firepoint.position, firepoint.rotation);
-                numofbulletsak47 += 1;
-                //yield return new WaitForSeconds (bulletspeed);
-                //System.Threading.Thread.Sleep();
+
+                if (Input.GetButton("Fire1"))
+                {
+                    shooting = true;
+                    Instantiate(BulletPre, firepoint.position, firepoint.rotation);
+                    numofbulletsak47 += 1;
+                    totalbulletsak47 += 1;
+                    //yield return new WaitForSeconds (bulletspeed);
+                    //System.Threading.Thread.Sleep();
             }
         }
         //if (numofbulletsak47 == 30)
         //{
             //wait();
             //numofbulletsak47 = 0;
-
-        //}
+        }
 
     }
     void UZI()
     {
-        if (numofbulletsUZI <= 20)
+        if (totalbulletsUZI <= MaxBulletsUZI)
         {
-            //  for(int i = 0; i <= 1; i++)
-            //  {
-            Instantiate(BulletPre, firepoint.position, firepoint.rotation);
-            numofbulletsUZI += 1;
-            
+            if (numofbulletsUZI <= 19)
+            {
+                //  for(int i = 0; i <= 1; i++)
+                //  {
+                Instantiate(BulletPre, firepoint.position, firepoint.rotation);
+                numofbulletsUZI += 1;
+                totalbulletsUZI += 1;
+
+            }
         }
-        //  }
     }
 
     //void wait(float loadtime)

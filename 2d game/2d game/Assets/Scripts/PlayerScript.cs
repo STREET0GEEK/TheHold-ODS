@@ -82,7 +82,7 @@ public class PlayerScript : MonoBehaviour {
     }
     bool isGrounded()
     {
-        Vector2 pos = new Vector2(transform.position.x, transform.position.y - (float)0.1);
+        //Vector2 pos = new Vector2(transform.position.x, transform.position.y - (float)0.1);
 
         return Physics2D.Raycast(transform.position, Vector2.down, disGround);
     }
