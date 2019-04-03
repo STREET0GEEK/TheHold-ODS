@@ -34,10 +34,13 @@ public class Enemy : MonoBehaviour {
     }
     public void takeDamage(int damage)
     {
-        Health -= damage;
+
+        GameObject thePlayer = GameObject.Find("Player");
+        PlayerScript playerScript = thePlayer.GetComponent<PlayerScript>(); Health -= damage;
         if (Health <= 0)
         {
             Die();
+            playerScript.Score += 1;
         }
     }
     void Die()

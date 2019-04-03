@@ -14,7 +14,7 @@ public class PlayerScript : MonoBehaviour {
     public static float pathLength; 
 
     public int Damage = 20;
-
+    public int Score = 0;
     public GameObject pl;
     public GameObject fp;
     
@@ -25,13 +25,14 @@ public class PlayerScript : MonoBehaviour {
     //maybe store in list
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (hitInfo.name == "Enemy (Clone)")
+        Debug.Log(hitInfo.tag);
+        if (hitInfo.tag == "enemy ")
         {
             hit = true;
             Health = Health - Damage; 
             
         }
-        if (hitInfo.name != "Enemy (Clone)")
+        if (hitInfo.tag != "enemy ")
         {
             hit = false;
         }
@@ -49,6 +50,7 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	void Update () {
+
        // GameObject spawnscript = GameObject.Find("SpawnPoint Right");
        // Spawn spawnScript = spawnscript.GetComponent<Spawn>();
 
